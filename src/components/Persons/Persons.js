@@ -14,12 +14,16 @@ class Persons extends PureComponent {
 
   // shouldComponentUpdate(nextProps, nextState) {
   //   console.log('[Persons.js] shouldComponentUpdate');
-  //   if(nextProps.persons !== this.props.persons) {
+  //   if (
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.changed !== this.props.changed ||
+  //     nextProps.clicked !== this.props.clicked
+  //   ) {
   //     return true;
-  //   }
-  //   else {
+  //   } else {
   //     return false;
   //   }
+  //   // return true;
   // }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -35,7 +39,8 @@ class Persons extends PureComponent {
     console.log('[Persons.js] componentDidUpdate');
     console.log(snapshot);
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     console.log('[Persons.js] componentWillUnmount');
   }
 
@@ -49,7 +54,6 @@ class Persons extends PureComponent {
           age={person.age}
           key={person.id}
           changed={event => this.props.changed(event, person.id)}
-          isAuth = {this.props.isAuthenticated}
         />
       );
     });
